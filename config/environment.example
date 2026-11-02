@@ -1,0 +1,23 @@
+# Required owner-selected deployment settings; never reuse example placeholders.
+SAILBOAT_PUBLIC_URL=https://your-controller.example.invalid
+SAILBOAT_ALLOWED_HOSTS=your-controller.example.invalid
+SAILBOAT_KEYS_JSON=
+SAILBOAT_OWNER_KEY_SHA256=
+SAILBOAT_AGENT_KEY=
+SAILBOAT_OWNER_SUB=
+OAUTH_CLIENT_ID=
+OAUTH_CLIENT_SECRET=
+SAILBOAT_STORAGE_BACKEND=local
+SAILBOAT_STATE_DIRECTORY=
+SAILBOAT_BROKER_WRITES_DISABLED=1
+SAILBOAT_CANDIDATE_ENTRY_LIVE=0
+SAILBOAT_MARKET_HOURS=NYSE_REGULAR
+SAILBOAT_AGENT_INTERVAL=120
+# Optional private Bucket backend, with a newly created empty checkpoint:
+# SAILBOAT_STORAGE_BACKEND=bucket
+# SAILBOAT_STATE_NAMESPACE=
+# SAILBOAT_STATE_BUCKET=
+# SAILBOAT_STATE_KEY=
+# SAILBOAT_STATE_S3_ACCESS_KEY=
+# SAILBOAT_STATE_S3_SECRET_KEY=
+# Brokerage, account identity and analyst endpoint are deliberately absent.

@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sailboat-controller"
+version = "0.1.0"
+description = "Owner-controlled Sailboat controller, dashboard, and agent integration"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = [
+  "mcp==1.30.0", "jsonschema==4.26.0", "uvicorn==0.38.0",
+  "starlette==1.9.0", "httpx==0.28.1", "cryptography==50.0.2",
+  "huggingface-hub==2.2.0", "boto3==1.43.121", "filelock==4.2.4",
+  "tzdata==2026.5", "psutil==7.2.2"
+]
+
+[project.optional-dependencies]
+claude = ["claude-agent-sdk==0.2.173"]
+dev = ["pytest==8.4.2", "detect-secrets==1.5.0"]
+
+[project.scripts]
+sailboat-instance = "sailboat.instance_setup:main"
+sailboat-owner = "sailboat.owner_cli:main"
+
+[tool.setuptools.packages.find]
+include = ["sailboat", "sailboat_core", "sailboat_assembly"]
+
+[tool.setuptools.package-data]
+sailboat = ["*.json", "*.md", "*.html", "*.js", "*.css"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = [".", "tests"]
+addopts = "-ra"

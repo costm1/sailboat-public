@@ -1,0 +1,88 @@
+SAILBOAT: INSTRUCTIONS FOR THE INSTALLING AI
+
+Objective: install an independent controller and dashboard for the current owner
+from this GitHub source repository. This is source-code distribution.
+
+1. SCOPE AND AUTHORITY
+Read README.md, SECURITY.md, docs/configuration.md, docs/connections.md and
+docs/deployment.md. Do not look for the creator's accounts, endpoints, credential
+caches, private plugin bindings, historical journals or existing installation.
+Do not reuse an unrelated application's broker or agent credentials. Ask the owner
+which hosting account and public HTTPS hostname they want to use. A source URL
+is permission to inspect/install source, not permission to spend money or trade.
+Never submit a real order to test installation. Do not run trading backtests.
+
+2. CLONE AND INSTALL
+Use the repository URL supplied by the owner; never substitute a guessed URL.
+Clone into a new directory. Use Python 3.11 or newer and a new virtual environment:
+  python -m venv .venv
+Activate it (Windows PowerShell: .\.venv\Scripts\Activate.ps1;
+POSIX shell: . .venv/bin/activate), then:
+  python -m pip install -c constraints-tested.txt '.[dev]'
+  python -m pytest -q
+The tests use synthetic state and fake services; outbound sockets are blocked.
+Do not install the three internal components from separately named public PyPI
+projects. This source repository includes sailboat, sailboat_core and sailboat_assembly.
+
+3. INITIALIZE A NEW OWNER INSTANCE
+With the chosen real HTTPS hostname, run:
+  python -m sailboat.instance_setup init --directory .local/my-instance --public-url https://YOUR-OWN-HOST
+This command refuses an existing directory. Never delete an old directory to
+bypass that protection. It writes private instance.json, separate owner and agent
+credential files, encryption keys, and a fresh DISARMED checkpoint. Protect the
+directory with owner-only operating-system permissions (Windows: review ACLs).
+Do not paste secrets into chat, commits, logs, Docker layers, or a public Space.
+Do not reuse example values as secrets. Save an owner-controlled backup securely.
+  python -m sailboat.instance_setup check --config .local/my-instance/instance.json
+This check is local only; it does not verify brokerage consent or hosted availability.
+
+4. DEPLOY CONTROLLER AND DASHBOARD
+Follow docs/deployment.md for self-hosting or an optional new Hugging Face Space.
+Use a new private storage location owned by this owner. One instance, one writer,
+one isolated state location. Never upload private state to the public source repo.
+Supply all required environment variables from this instance's private configuration.
+Use a durable volume for local storage, or the documented private Bucket workflow.
+Do not initialize over existing storage or silently replace unavailable state.
+Configure the reverse proxy and exact allowed hosts for the chosen HTTPS origin.
+Configure owner OAuth with this owner's verified provider subject; no default owner
+is trusted. The dashboard and controller are served by the same process at / and /mcp.
+Start using:
+  python -m sailboat.instance_setup serve --config .local/my-instance/instance.json
+For hosted environment variables, the process is python -m sailboat.cloud_server.
+It must be configured first; missing configuration is a startup error, not a fallback.
+
+5. CONNECT THIS OWNER'S SERVICES
+Follow docs/connections.md. Have the owner authorize each service through its own
+official consent flow. Respect service access restrictions. Do not scrape browser
+sessions, copy another app's tokens or bypass a denied registration.
+Broker and analyst connections are optional for initial dashboard installation.
+If access is unavailable, report that the installation is DISARMED and unconnected.
+The agent adapter requires the documented response contract, not just a chat URL.
+Use owner-approved endpoints and accounts only. Never claim broker support from a
+successful local test. Keep SAILBOAT_BROKER_WRITES_DISABLED=1 during setup.
+
+6. CONFIGURE THE PLUGIN AND SKILLS
+Read plugins/sailboat/README.md and reuse its source. Generate an instance-specific
+mcp.json using the plugin command, then register that server in the AI host using
+the owner's chosen OAuth or agent-only bearer credential. Do not give the agent
+the owner-control credential. Do not copy any creator app ID or plugin binding.
+Install skills/sailboat-controller/SKILL.md into the owner's chosen agent environment
+if the host supports skills. Plugin installation varies by host; report what was
+actually installed and verify tool discovery without a submission.
+
+7. HANDOVER AND TRADING AUTHORITY
+Verify unauthenticated account/owner endpoints are denied, dashboard assets load,
+the correct owner can sign in, agent credentials cannot access /owner/control,
+state is empty, mode is DISARMED, writes are disabled, and no unexpected endpoint
+was contacted. Use only status, tool discovery and authorized read-only checks.
+Record the owner's deployment URL and recovery procedure in their private notes.
+Do not enable scheduled closing, change owner limits, enable host writes, enable
+candidate execution, ARM, or place an order as an installation step. Explain the
+existing independent gates to the owner. Enabling trading is a separate explicit
+owner action; restart always disarms. Agent output and readiness are not authority.
+
+8. UPDATES AND PUBLICATION
+Do not push private configuration or state. Before distributing your fork, run
+python tools/scan_publication.py and the secret-scanning steps in SECURITY.md on
+the working tree and full Git history. Preserve journal/recovery evidence privately.
+Report completed checks and limitations accurately. Never infer profitability.

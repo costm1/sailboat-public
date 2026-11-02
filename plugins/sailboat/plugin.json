@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "sailboat",
+  "version": "0.1.9",
+  "description": "Manually inspect Sailboat context, research markets, and submit an explicitly requested structured decision.",
+  "author": {
+    "name": "Sailboat contributors"
+  },
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Sailboat",
+        "shortDescription": "Your controller, from chat",
+        "longDescription": "Connect to your independent Sailboat controller. Research markets, submit authorized analysis, and recover durable receipts. Owner controls remain separate.",
+        "developerName": "Sailboat contributors",
+        "category": "Data & Analytics",
+        "capabilities": [
+          "Interactive"
+        ],
+        "defaultPrompt": [
+          "Show my Sailboat positions and active plans.",
+          "Research QQQ with Sailboat and explain your assessment without submitting a decision.",
+          "Retrieve the Sailboat receipt for my previous decision."
+        ],
+        "logo": "./assets/icon.png",
+        "composerIcon": "./assets/icon.png"
+      }
+    }
+  }
+}
