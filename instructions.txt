@@ -3,6 +3,19 @@ SAILBOAT: INSTRUCTIONS FOR THE INSTALLING AI
 Objective: install an independent controller and dashboard for the current owner
 from this GitHub source repository. This is source-code distribution.
 
+TRADING RISK AND DISCLAIMER
+Sailboat is experimental, MIT-licensed open-source software provided AS IS, without
+warranties. There is no guarantee of profitability, uptime, execution accuracy,
+order fills, or protection against losses. Autonomous trading can cause substantial
+financial losses, including loss of the entire allocated capital.
+Users are responsible for their own brokerage accounts, authorizations,
+configurations, trading activity, and compliance with applicable requirements.
+Sailboat is not a brokerage service, financial adviser, or source of personalized
+investment advice. There is no commitment to ongoing maintenance, updates,
+technical support, or operational availability. The MIT License contains warranty
+and liability disclaimers, subject to applicable law; these do not eliminate every
+possible liability. Explain these limitations before the owner enables trading.
+
 1. SCOPE AND AUTHORITY
 Read README.md, SECURITY.md, docs/configuration.md, docs/connections.md and
 docs/deployment.md. Do not look for the creator's accounts, endpoints, credential

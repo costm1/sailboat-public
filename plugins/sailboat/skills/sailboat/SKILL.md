@@ -5,6 +5,8 @@ description: "Send natural-language market contributions to Sailboat Assembly, r
 
 # Sailboat shared controller
 
+"Shared" means shared within the current owner's independent instance. Connect only to that owner's configured server; never discover or reuse the project creator's infrastructure.
+
 Use only for the Sailboat interaction the user requested. Selecting the plugin alone does not authorize a submission. Chat and scheduled Claude share the existing account, plans, Assembly integration, and owner controls. Chat uses the sending agent; it does not start scheduled Claude inference or invoke a second model.
 
 ## Natural-language contributions

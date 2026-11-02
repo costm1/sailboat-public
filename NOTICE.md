@@ -6,8 +6,7 @@ are limited to independent configuration, fresh-instance setup, storage/deployme
 support, documentation, and isolation tests. The trading policy has not been redesigned.
 Private operational records and previous Git history are excluded.
 
-MIT is the proposed publication license for project-owned source. The publishing
-owner must confirm they have rights to release that source and artwork under LICENSE.
+Project-owned source and artwork are licensed under the MIT License in LICENSE.
 No claim of ownership is made over external services, trademarks, model weights,
 protocol specifications, or third-party packages. Python dependencies are installed
 separately and retain their own licenses. The optional Claude runtime is not vendored.

@@ -3,6 +3,12 @@
 GitHub is the source home. Hosting is an owner choice. Clone and install as described
 in instructions.txt; no hosted service is connected by default.
 
+Read the [trading-risk disclaimer](../README.md#trading-risk-and-disclaimer) and
+[MIT License](../LICENSE) before deploying. This experimental software is provided
+AS IS, without warranties or a commitment to maintenance, support, or availability.
+Autonomous trading can lose the entire allocated capital. The owner remains responsible
+for their accounts, permissions, configuration, trading, and applicable requirements.
+
 ## Self-hosting
 
 Initialize an unused instance directory on the target host. Give it owner-only access,

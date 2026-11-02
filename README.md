@@ -24,6 +24,20 @@ GitHub is the source distribution; Hugging Face Spaces is an optional hosting de
 No account, brokerage consent, running server, paid service, or trading permission comes
 with the source.
 
+## Trading risk and disclaimer
+
+Sailboat is experimental, MIT-licensed open-source software provided **AS IS**, without
+warranties. There is no guarantee of profitability, uptime, execution accuracy, order
+fills, or protection against losses. Autonomous trading can cause substantial financial
+losses, including loss of the entire allocated capital.
+
+Users are responsible for their own brokerage accounts, authorizations, configurations,
+trading activity, and compliance with applicable requirements. Sailboat is not a brokerage
+service, financial adviser, or source of personalized investment advice. The project is
+provided without any commitment to ongoing maintenance, updates, technical support, or
+operational availability. The [MIT License](LICENSE) contains warranty and liability
+disclaimers, subject to applicable law; these do not eliminate every possible liability.
+
 ## Start here
 
 1. Clone the repository into a new directory and read [instructions.txt](instructions.txt).

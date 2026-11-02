@@ -1,0 +1,172 @@
+{
+  "get_equity_quotes": {
+    "type": "object",
+    "properties": {
+      "symbols": {
+        "type": [
+          "null",
+          "array"
+        ],
+        "items": {
+          "type": "string"
+        },
+        "description": "One or more stock symbols. Above 20 symbols, quotes still return but closes is omitted with closes_error set."
+      }
+    },
+    "required": [
+      "symbols"
+    ],
+    "additionalProperties": false
+  },
+  "get_equity_historicals": {
+    "type": "object",
+    "properties": {
+      "symbols": {
+        "type": [
+          "null",
+          "array"
+        ],
+        "items": {
+          "type": "string"
+        },
+        "description": "One or more stock symbols (uppercase). Up to 10 per call."
+      },
+      "start_time": {
+        "type": "string",
+        "description": "Start of the range (RFC3339 UTC, e.g. '2026-01-01T00:00:00Z'). Required."
+      },
+      "end_time": {
+        "type": "string",
+        "description": "End of the range (RFC3339 UTC). Optional \u2014 when omitted, defaults to the current time."
+      },
+      "interval": {
+        "type": "string",
+        "description": "Bar interval. Optional \u2014 when omitted, the server picks an interval that targets ~2,500 bars across the requested range. Intraday: 15second, 30second, minute, 5minute, 10minute, 30minute, hour, 4hour. Interday: day, week, month, 3month, 6month, year, 5year, 10year, 20year, 50year. Note: the 1-minute bar is named 'minute' (not '1minute')."
+      },
+      "bounds": {
+        "type": "string",
+        "description": "Session bounds. One of 'regular' (RTH, default), 'extended', 'trading', '24_5', '24_7', 'hyper_trading'."
+      },
+      "adjustment_type": {
+        "type": "string",
+        "description": "Corporate-action adjustment: 'none' (raw prices), 'split' (default; right for backtesting), or 'all' (split + dividend; intraday only)."
+      }
+    },
+    "required": [
+      "symbols",
+      "start_time"
+    ],
+    "additionalProperties": false
+  },
+  "get_option_chains": {
+    "type": "object",
+    "properties": {
+      "ids": {
+        "type": "string",
+        "description": "Comma-separated chain UUIDs."
+      },
+      "underlying_symbol": {
+        "type": "string",
+        "description": "Ticker filter; covers equity and index underlyings (e.g. 'AAPL', 'SPX')."
+      }
+    },
+    "additionalProperties": false
+  },
+  "get_option_instruments": {
+    "type": "object",
+    "properties": {
+      "chain_id": {
+        "type": "string",
+        "description": "Chain UUID."
+      },
+      "chain_symbol": {
+        "type": "string",
+        "description": "Underlying ticker (e.g. 'AAPL')."
+      },
+      "expiration_dates": {
+        "type": "string",
+        "description": "Comma-separated YYYY-MM-DD expirations."
+      },
+      "strike_price": {
+        "type": "string",
+        "description": "Exact strike (e.g. '150.0000')."
+      },
+      "type": {
+        "type": "string",
+        "description": "'call' or 'put'."
+      },
+      "state": {
+        "type": "string",
+        "description": "'active' (default), 'expired', or 'inactive'. Use 'expired' to find option contracts whose expiration date has passed; 'inactive' is for delisted/withdrawn contracts that never expired."
+      },
+      "tradability": {
+        "type": "string",
+        "description": "'tradable' or 'untradable' (untradable is rejected at the tool layer)."
+      },
+      "ids": {
+        "type": "string",
+        "description": "Comma-separated instrument UUIDs."
+      },
+      "cursor": {
+        "type": "string",
+        "description": "Pagination cursor. Omit for the first page; for the next page, pass the prior response's next value back verbatim."
+      }
+    },
+    "additionalProperties": false
+  },
+  "get_option_quotes": {
+    "type": "object",
+    "properties": {
+      "instrument_ids": {
+        "type": [
+          "null",
+          "array"
+        ],
+        "items": {
+          "type": "string"
+        },
+        "description": "Option instrument UUIDs. Above 20, quotes still return but closes is omitted with closes_error set."
+      }
+    },
+    "required": [
+      "instrument_ids"
+    ],
+    "additionalProperties": false
+  },
+  "get_option_historicals": {
+    "type": "object",
+    "properties": {
+      "instrument_ids": {
+        "type": [
+          "null",
+          "array"
+        ],
+        "items": {
+          "type": "string"
+        },
+        "description": "Option contract instrument UUIDs (from get_option_instruments). Up to 10 per call."
+      },
+      "start_time": {
+        "type": "string",
+        "description": "Start of the range (RFC3339 UTC, e.g. '2026-01-01T00:00:00Z'). Required."
+      },
+      "end_time": {
+        "type": "string",
+        "description": "End of the range (RFC3339 UTC). Optional \u2014 when omitted, defaults to the current time."
+      },
+      "interval": {
+        "type": "string",
+        "description": "Bar interval. Optional \u2014 when omitted, the server auto-selects an interval that targets a bounded bar count across the range. Intraday: 15second, 30second, minute, 5minute, 10minute, 30minute, hour, 4hour. Interday: day, week, month, 3month, 6month, year, 5year, 10year, 20year, 50year. Note: the 1-minute bar is named 'minute' (not '1minute')."
+      },
+      "bounds": {
+        "type": "string",
+        "description": "Session bounds. One of 'regular' (regular hours, default), '24_5', or '24_7'. Use '24_5'/'24_7' only when the user explicitly asks about extended-hours or overnight option activity (index options, and certain equity options)."
+      }
+    },
+    "required": [
+      "instrument_ids",
+      "start_time"
+    ],
+    "additionalProperties": false
+  }
+}

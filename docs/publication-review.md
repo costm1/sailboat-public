@@ -1,10 +1,10 @@
 # Publication review
 
-This is a source repository prepared for public GitHub review. Publication is a separate
-step; no download bundle, installer, executable, or hosted account is the deliverable.
+This is a public source distribution. No download bundle, installer, executable, or
+hosted account is the deliverable. The following checks also apply to future releases.
 
-Review the fresh repository's complete file list and history. Confirm the proposed MIT
-license and rights to the included source/artwork. Controller policy files should remain
+Review the repository's complete file list and history. Preserve the MIT License and
+applicable third-party attribution. Controller policy files should remain
 identical to the selected working source except the documented instance/configuration
 boundaries. No private state, recorded assessments, deployment reports, account identifiers,
 creator endpoints or previous Git objects should be present.
